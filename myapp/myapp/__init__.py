@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from __future__ import print_function, division
-from flask import Flask, Blueprint, send_from_directory
+from flask import Flask, Blueprint, send_from_directory, request, render_template
 #import myapp.jinja_filters
 import sys
 import os
@@ -46,12 +46,22 @@ def create_app(debug=False):
     # ----------------------------
     app.config["UPLOAD_FOLDER"] = os.environ.get("MYAPP_DATA_DIR", None)
 
+    # ----------------------------
+    # Global Error Handlers
+    # ----------------------------
+    @app.errorhandler(404)
+    def this_is_the_wrong_page(e):
+        error = {}
+        error['title'] = 'MyApp | Page Not Found'
+        error['page'] = request.url
+        return render_template('errors/page_not_found.html', **error), 404
+
     # ----------------------------------
-    # Web Route Registration
+    # Web Route Registration - Import and register all your blueprints here
     # ----------------------------------
     from myapp.controllers.index import index_page
 
-    url_prefix = '/myapp/'
+    url_prefix = '/myapp'
     app.register_blueprint(index_page, url_prefix=url_prefix)
 
     return app

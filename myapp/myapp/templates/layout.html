@@ -9,17 +9,22 @@
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
     {% block csshead %}{% endblock csshead %}
 
     <!-- Javascript sources-->
     {# include your js files #}
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
     {% block jshead %}{% endblock jshead %}
 </head>
 
 <!-- Html body -->
 <body class='{{page|default("myapp")}}'>
+
+    <!-- Add a header -->
+    {# the include tells Jinja2 to import the contents of the named file directly in this location #}
+    {% include 'header.html' %}
 
     <!-- Main Body -->
     <div class="container-fluid" id="content">

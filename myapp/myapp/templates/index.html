@@ -1,10 +1,38 @@
+{# This is a Jinja2 comment #}
+
+{# In Jinja2, layout is the page from which all others inherit, using extends.  It mostly imports external libraries #}
 {% extends "layout.html" %}
+
+{# In Jinja2, this lets the header know which page is the active page (to highlight it) #}
+{% set active_page = "index" %}
+
+{# insert custom header files here, like specialized css #}
+{% block csshead %}
+{% endblock csshead %}
 
 {% block body %}
 
 <div class='well'>
+    {# Variables in Jinja2 are accessed via double "{{}}" #}
     <h1>{{mytext}} on the {{page|upper}} page</h1>
+    <h2>The url for my page is {{myurl}}</h2>
+    <h3>Cat loading is set to {{loadcat}}</h3>
+    <h4><a href='{{url_for("index_page.wrongpage")}}'>Click Me!</a> I'm a page that doesn't exist.</h4>
+    <h5>I'm so small :( <small>I'm even smaller....</small></h5>
 </div>
+
+{% if loadcat %}
+
+<div class='well'>
+    <div class='row'>
+        <div class='col-md-5 col-xs-2'>
+            <img class='img-responsive' src='{{url_for("static", filename="images/catlightning.jpg")}}' alt='My Image'>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
 
 {% endblock body %}
 
