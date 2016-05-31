@@ -30,7 +30,8 @@ def main():
     return 'Hello, Welcome to Flask'
 
 
-@app.route('/add/', methods=['GET'], endpoint='doadd')
+@app.route('/add/', endpoint='doadd')
+@app.route('/addnumbers/')
 def add():
     x = 1
     y = 2
@@ -38,8 +39,26 @@ def add():
     return 'Adding: x+y: {0} + {1} = {2}'.format(x, y, z)
 
 
+@app.route('/hello/<name>/')
+@app.route('/hello/', defaults={'name': 'Bob'})
+def hello(name):
+    return 'Hello {0}'.format(name)
+
+
 @app.route('/subtract/<int:x>/<int:y>/', methods=['GET'], endpoint='dosubtract')
 def subtract(x, y):
+    ''' Subtract method with variables
+
+    You can convert variables into different types on input with
+        <converter:variable>
+
+    Built-In Converter types:
+        int - convert to integer
+        float - convert to float
+        string - accepts text without trailing slash
+        path - accepts text with slashes
+
+    '''
     z = x - y
     return 'Subtracting x-y: {0} - {1} = {2}'.format(x, y, z)
 
@@ -49,10 +68,12 @@ def do_more_adding():
     '''
     We can redirect from a route to another using
     named endpoints, url_for, and redirect
+
+    Navigate to /addagain/ and it redirects to the /add/ page
     '''
 
     addurl = url_for('doadd')
-    print('Add URL:', addurl)
+    print('Add URL:', addurl, url_for('add'))
     return redirect(addurl)
 
 if __name__ == '__main__':
