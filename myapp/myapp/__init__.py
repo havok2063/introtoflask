@@ -3,6 +3,7 @@
 
 from __future__ import print_function, division
 from flask import Flask, Blueprint, send_from_directory, request, render_template
+from flask_jsglue import JSGlue
 #import myapp.jinja_filters
 import sys
 import os
@@ -15,6 +16,11 @@ def create_app(debug=False):
     # -----------------------------
     app = Flask(__name__, static_url_path='/static')
     app.debug = debug
+
+    # I make it so you can build URLs in javascript using Flask's url_for
+    # rather than having to hardcode anything.
+    # http://stewartjpark.com/Flask-JSGlue/
+    jsglue = JSGlue(app)
 
     # Define custom filters into the Jinja2 environment.
     # Any filters defined in the jinja_env submodule are made available.
@@ -60,9 +66,11 @@ def create_app(debug=False):
     # Web Route Registration - Import and register all your blueprints here
     # ----------------------------------
     from myapp.controllers.index import index_page
+    from myapp.controllers.examples import example_page
 
     url_prefix = '/myapp'
     app.register_blueprint(index_page, url_prefix=url_prefix)
+    app.register_blueprint(example_page, url_prefix=url_prefix)
 
     return app
 

@@ -4,38 +4,38 @@
 {% extends "layout.html" %}
 
 {# In Jinja2, this lets the header know which page is the active page (to highlight it) #}
-{% set active_page = "index" %}
+{% set active_page = active_page|default("index") %}
 
 {# insert custom header files here, like specialized css #}
 {% block csshead %}
 {% endblock csshead %}
 
+{# here you are defining the content that gets inserted into the layout body block #}
 {% block body %}
 
-<div class='well'>
+<div class='well'> {# well is a bootstrap class that adds the grey box #}
     {# Variables in Jinja2 are accessed via double "{{}}" #}
     <h1>{{mytext}} on the {{page|upper}} page</h1>
     <h2>The url for my page is {{myurl}}</h2>
-    <h3>Cat loading is set to {{loadcat}}</h3>
+    <h3>Cat loading is set to {{loadcat}}. <small>You can set defaults for variables that don't exist {{myvar|default("Not set")}}</small></h3>
     <h4><a href='{{url_for("index_page.wrongpage")}}'>Click Me!</a> I'm a page that doesn't exist.</h4>
     <h5>I'm so small :( <small>I'm even smaller....</small></h5>
 </div>
 
-{% if loadcat %}
-
-<div class='well'>
-    <div class='row'>
-        <div class='col-md-5 col-xs-2'>
-            <img class='img-responsive' src='{{url_for("static", filename="images/catlightning.jpg")}}' alt='My Image'>
+{# you can write conditional template blocks with the %% statements #}
+{% if loadcat or session.loadcat %}
+    <div class='well'>
+        <div class='row'>
+            <div class='col-md-5 col-xs-2'>
+                <img class='img-responsive' src='{{url_for("static", filename="images/catlightning.jpg")}}' alt='My Image'>
+            </div>
         </div>
     </div>
-</div>
-
+{% else %}
+    <div class='well'>
+        <h5>I'm the else clause.  Cat loading is off</h5>
+    </div>
 {% endif %}
-
 
 {% endblock body %}
 
-<!-- JS Code -->
-{% block code %}
-{% endblock code %}

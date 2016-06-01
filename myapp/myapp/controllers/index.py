@@ -22,7 +22,8 @@ def index():
 
     '''
 
-    # Create the dictionary to contain all the values
+    # Create the dictionary to contain all the parameters you want
+    # to pass into the Jinja2 template
     output = {}
     output['title'] = 'MyApp'
     output['page'] = 'index'
@@ -51,6 +52,6 @@ def page_not_found(e):
     '''
     error = {}
     error['title'] = 'Index | Page Not Found'
-    error['page'] = request.url
+    error['page'] = 'Custom Index Blueprint error: {0}'.format(request.url)
     return render_template('errors/page_not_found.html', **error), 404
 
