@@ -15,7 +15,10 @@ This tutorial has these Python dependencies:
 
  * [Flask-JSGlue](http://stewartjpark.com/Flask-JSGlue/)
 
+    % sudo pip install Flask-JSGlue
 
-# A Simple Example
+A Simple Example
+----------------
 
-# A More Complex Application
+A More Complex Application
+--------------------------
