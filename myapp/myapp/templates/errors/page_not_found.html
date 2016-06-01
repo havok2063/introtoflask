@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block head %}
+{% endblock head %}
+
+{% block body %}
+
+    <div>
+        <div class='row'>
+            <div class='col-md-6 vert-offset-top-7' id='errortext'>
+
+                <h2>This is a custom error page!</h2>
+                <h3>404: Page Not Found</h3>
+                <p>What you were looking for is just not there.</p>
+
+                {% if page %}
+                    <h4>{{page}} page not found!</h4>
+                    {% if '.html' in page %}
+                        <h4>Try removing the .html</h4>
+                    {% endif %}
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+
+{% endblock body %}

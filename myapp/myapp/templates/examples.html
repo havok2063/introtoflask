@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+{% set active_page = active_page|default("examples") %}
+
+{% block body %}
+
+<div class='well'>
+    <div class='row'>
+        <div class='col-md-12 col-md-offset-5'>
+            <h1>Examples <small>Offset this with a class</small></h1>
+        </div>
+    </div>
+     <div class='row'>
+        <div class='col-md-12'>
+            <h2 class='pull-left'>Force text left</h2>
+            <h2 class='pull-right'>Force text right</h2>
+        </div>
+    </div>
+</div>
+
+{# Some Javascript and Input Examples #}
+<div class='well'>
+    <div class='row'>
+        <div class='col-md-12'>
+            <h4>Here are some Buttons that do Javascript things</h4>
+        </div>
+        <div class='col-md-4'>
+            {# Bootstrap Form #}
+            <form class="form-inline" role='form' id='randomform'>
+              <div class="form-group">
+                <label class="sr-only" for="exampleInputAmount">Amount (in dollars)</label>
+                <div class="input-group">
+                  <input type="text" class="form-control input-sm" name='start' id="start" placeholder="Start">
+                  <div class="input-group-addon">To</div>
+                  <input type="text" class="form-control input-sm" name='end' id="end" placeholder="End">
+                </div>
+              </div>
+              {# A normal form submission type='submit' will cause a page change/reload.
+              #}
+              <button type="button" class="btn btn-primary" id='randombutton'>Get a Random Number</button>
+            </form>
+            <div id='randomoutput'></div>
+        </div>
+        <div class='col-md-4'>
+            <button type="button" class="btn btn-primary">Click Me to Change a Flask Session Variable</button>
+        </div>
+    </div>
+</div>
+
+{# Some Macro and Loop Examples #}
+<div class='well'>
+    <div class='row'>
+        <div class='col-md-4'>
+        </div>
+        <div class='col-md-4'>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
+
+<!-- JS Code -->
+{% block code %}
+    {# Load the javascript source code #}
+    <script type='text/javascript' src="{{url_for('static',filename='js/example.js')}}"></script>
+    <script type='text/javascript'>
+        // instantiate the Example javascript object.
+        // A Javascript Object MUST be called with the new keyword.
+        var exam = new Example();
+        console.log('here is my exam object', exam);
+        // Use a public method on our new object
+        var z = exam.add(5, 3);
+        console.log("z is", z);
+    </script>
+{% endblock code %}
