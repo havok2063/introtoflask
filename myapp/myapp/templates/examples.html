@@ -34,14 +34,25 @@
                   <input type="text" class="form-control input-sm" name='end' id="end" placeholder="End">
                 </div>
               </div>
-              {# A normal form submission type='submit' will cause a page change/reload.
+              {# A normal form submission type='submit' will cause a page change/reload. We don't want that here.
+              Change type="submit" to type="button"
               #}
               <button type="button" class="btn btn-primary" id='randombutton'>Get a Random Number</button>
             </form>
+
+            {# Here is the output of the RandomNumber #}
             <div id='randomoutput'></div>
+
+            {# Here is a List group #}
+            <ul class="list-group">
+              <li class="list-group-item">Try no numbers</li>
+              <li class="list-group-item">Try a number and a letter</li>
+              <li class="list-group-item">Try two numbers </li>
+              <li class="list-group-item">Try only one number</li>
+            </ul>
         </div>
         <div class='col-md-4'>
-            <button type="button" class="btn btn-primary">Click Me to Change a Flask Session Variable</button>
+            <button type="button" class="btn btn-{{'success' if session.loadcat else 'primary'}} {{'active' if session.loadcat else ''}}" id='changesession' data-toggle='button' aria-pressed="{{'true' if session.loadcat else 'false'}}">Click Me to Change a Flask Session Variable to toggle loadcat</button>
         </div>
     </div>
 </div>

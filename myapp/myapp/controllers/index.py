@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from __future__ import print_function, division
+from __future__ import print_function, division, absolute_import
 from flask import current_app, Blueprint, render_template, abort
 from flask import session as current_session, request, redirect, url_for, jsonify
 
@@ -28,7 +28,9 @@ def index():
     output['title'] = 'MyApp'
     output['page'] = 'index'
     output['mytext'] = 'Here is some text!'
-    output['loadcat'] = False
+    if 'loadcat' not in current_session:
+        current_session['loadcat'] = False
+    print('loadcat', current_session['loadcat'])
     output['myurl'] = url_for('index_page.index')
 
     return render_template('index.html', **output)

@@ -9,7 +9,7 @@ Make sure that [Flask](https://pypi.python.org/pypi/Flask/) is installed:
 
 If you are using the [Anaconda Python distribution](http://www.continuum.io), Flask is already installed; you can make sure you are running the current version with:
 
-    % conda update flask
+    % sudo conda update flask
 
 This tutorial has these Python dependencies:
 

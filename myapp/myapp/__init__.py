@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from __future__ import print_function, division
+from __future__ import print_function, division, absolute_import
 from flask import Flask, Blueprint, send_from_directory, request, render_template
 from flask_jsglue import JSGlue
 #import myapp.jinja_filters
@@ -37,15 +37,14 @@ def create_app(debug=False):
     # Load the appropriate Flask configuration file for a debug or production version
     # ----------------------------------
     if app.debug:
-        #server_config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'configuration', 'localhost.cfg')
-        pass
+        server_config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'configuration', 'localhost.cfg')
     else:
         pass
         # Load a configuration file for a production version of your app!
         # server_config_file = /path/to/production/config/file
 
-    #app.logger.info('Loading config file: {0}'.format(server_config_file))
-    #app.config.from_pyfile(server_config_file)
+    # app.logger.info('Loading config file: {0}'.format(server_config_file))
+    app.config.from_pyfile(server_config_file)
 
     # ----------------------------
     # Manually add any configuration parameters
