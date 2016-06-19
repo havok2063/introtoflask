@@ -14,12 +14,20 @@ If you are using the [Anaconda Python distribution](http://www.continuum.io), Fl
 This tutorial has these Python dependencies:
 
  * [Flask-JSGlue](http://stewartjpark.com/Flask-JSGlue/)
+ * [Flask-Testing](https://pythonhosted.org/Flask-Testing/)
 
-Install it:
+Install them:
 
     % sudo pip install Flask-JSGlue
+    % sudo pip install Flask-Testing
 
 Follow along with the code and the [IntroToFlask](introtoflask.pdf) slides.
+
+Add the following to your PYTHONPATH in your .bashrc, .profile, or .tschrc
+
+    export PYTHONPATH=$PYTHONPATH:/your/path/to/this/repo/introtoflask/myapp
+
+and replace your/path/to/this/repo with your directory path
 
 A Simple Example
 ----------------
@@ -37,6 +45,9 @@ Try:
 
     python app.py -d -p 8000
 
+In debug mode, the Flask app will auto-reload when it detects code changes, and provides full tracebacks in the
+browser for easy debugging and development.  Let's work in debug mode from here on!
+
 A More Complex Application
 --------------------------
 
@@ -47,5 +58,7 @@ Try:
 
     python run_myapp.py -d -p 9000
 
-The main Flask app is now defined inside a method called create_app, located within the modules __init__.py file.
+The main Flask app is now defined inside a method called create_app, located within the module's init file.
 This allows you to run many instances of the same application, using the run_app command.
+
+create_app is a way of creating an 'application factory'.  It allows you to test running your app under different configurations

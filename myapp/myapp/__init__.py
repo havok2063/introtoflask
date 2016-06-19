@@ -67,7 +67,7 @@ def create_app(debug=False):
     from myapp.controllers.index import index_page
     from myapp.controllers.examples import example_page
 
-    url_prefix = '/myapp'
+    url_prefix = '/myapp'  # I can prefix all routes
     app.register_blueprint(index_page, url_prefix=url_prefix)
     app.register_blueprint(example_page, url_prefix=url_prefix)
 

@@ -76,6 +76,7 @@ def changesession():
     form = processRequest(request)
     active = form.get('isactive', None)
 
+    print('active', active)
     # set the session variable
     if active == 'true':
         print('setting loadcat false')
