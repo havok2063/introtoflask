@@ -19,7 +19,7 @@ Install it:
 
     % sudo pip install Flask-JSGlue
 
-Follow along with the code and the IntroToFlask(introtoflask.pdf) slides.
+Follow along with the code and the [IntroToFlask](introtoflask.pdf) slides.
 
 A Simple Example
 ----------------
