@@ -19,6 +19,8 @@ Install it:
 
     % sudo pip install Flask-JSGlue
 
+Follow along with the code and the IntroToFlask(introtoflask.pdf) slides.
+
 A Simple Example
 ----------------
 
@@ -31,7 +33,7 @@ I've added a few command-line arguments to make it a bit more flexible:
     -d --debug - runs the app in debug mode
     -p --port [number] - specify a different port to run the app on other than the default port 5000
 
-Try::
+Try:
 
     python app.py -d -p 8000
 
@@ -41,7 +43,7 @@ A More Complex Application
 This example demonstrates a possible layout for a full-fledged application.  The application is now packaged into a
 module called myapp.
 
-Try::
+Try:
 
     python run_myapp.py -d -p 9000
 
