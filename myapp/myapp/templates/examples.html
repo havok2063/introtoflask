@@ -1,6 +1,10 @@
 {% extends "layout.html" %}
 {% set active_page = active_page|default("examples") %}
 
+{# Import code from macros to reuse in places #}
+{% from 'macros.html' import listgroup, table %}
+
+
 {% block body %}
 
 <div class='well'>
@@ -52,7 +56,16 @@
             </ul>
         </div>
         <div class='col-md-4'>
-            <button type="button" class="btn btn-{{'success' if session.loadcat else 'primary'}} {{'active' if session.loadcat else ''}}" id='changesession' data-toggle='button' aria-pressed="{{'true' if session.loadcat else 'false'}}">Click Me to Change a Flask Session Variable to toggle loadcat</button>
+            {# You can set variables inside jinja2 #}
+            {% set offtext = 'Change a Flask Session Variable to toggle loadcat' %}
+            {% set ontext = 'Toggle loadcat off' %}
+
+            {% if not session.loadcat %}
+            <button type="button" class="btn btn-primary {{'active' if session.loadcat else ''}}" id='changesession' data-toggle='button' aria-pressed="{{'true' if session.loadcat else 'false'}}" data-complete-text='{{ontext}}'>{{offtext}}</button>
+            {% else %}
+            <button type='button' class='btn btn-danger' disabled='disabled'>My button is disabled :(</button>
+            {% endif %}
+
         </div>
     </div>
 </div>
@@ -61,8 +74,11 @@
 <div class='well'>
     <div class='row'>
         <div class='col-md-4'>
+            {{listgroup(listdata, 'animals')}}
         </div>
         <div class='col-md-4'>
+            <h3>I'm a macro table</h3>
+            {{table(tabledata)}}
         </div>
     </div>
 </div>

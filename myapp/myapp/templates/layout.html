@@ -33,6 +33,9 @@
         {% block body %}{% endblock body %}
     </div>
 
+    <!-- Add a Footer -->
+    {% include 'footer.html' %}
+
     <!-- Javascript Code Block -->
     {# Put the code block at the bottom so it only loads once the rest of the page has loaded #}
     {# Load the Javascsript code to use Flask url_for #}

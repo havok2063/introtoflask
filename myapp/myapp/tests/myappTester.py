@@ -6,7 +6,7 @@
 # @Author: Brian Cherinka
 # @Date:   2016-06-19 18:46:30
 # @Last modified by:   Brian Cherinka
-# @Last Modified time: 2016-06-19 19:44:03
+# @Last Modified time: 2016-06-19 20:07:31
 
 from __future__ import print_function, division, absolute_import
 
@@ -25,9 +25,9 @@ except ImportError as e:
 
 
 class MyAppTester(TestCase):
-    ''' subclass (MarvinTester.MarvinTester, TestCase), in that order '''
 
     def create_app(self):
+        ''' creates the testing app and sets it to self.app '''
         app = create_app(debug=True)
         app.config['TESTING'] = True
         app.config['WTF_CSRF_ENABLED'] = False

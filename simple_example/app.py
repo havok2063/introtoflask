@@ -72,7 +72,7 @@ def subtract(x, y):
     return 'Subtracting x-y: {0} - {1} = {2}'.format(x, y, z)
 
 
-@app.route('/addagain/')
+@app.route('/addagain/', endpoint='letsaddagain')
 def do_more_adding():
     '''
     We can redirect from a route to another using
@@ -83,6 +83,7 @@ def do_more_adding():
 
     addurl = url_for('doadd')
     print('Add URL:', addurl, url_for('add'))
+    print('Subtract URL:', url_for('dosubtract', x=10, y=3))
     return redirect(addurl)
 
 
@@ -97,7 +98,7 @@ def crash_me():
 
     '''
 
-    # Try to expand a tuple that does not have all the
+    # Try to expand a tuple that does not have all the things
     thing = (5, 4)
     x, y, z = thing
 

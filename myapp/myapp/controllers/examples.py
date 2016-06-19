@@ -17,6 +17,12 @@ def example():
     output['title'] = 'MyApp Examples'
     output['page'] = 'example'
 
+    # make some list data
+    output['listdata'] = ['DOG', 'CAT', 'HORSE', 'PIG']
+
+    # make some table data
+    output['tabledata'] = {'head': ['A', 'B'], 'body': [(1, 4), (2, 5), (3, 6)]}
+
     return render_template('examples.html', **output)
 
 
@@ -76,7 +82,6 @@ def changesession():
     form = processRequest(request)
     active = form.get('isactive', None)
 
-    print('active', active)
     # set the session variable
     if active == 'true':
         print('setting loadcat false')

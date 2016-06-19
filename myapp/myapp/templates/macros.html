@@ -1,0 +1,34 @@
+
+{# Resuable code can be imported elsewhere #}
+
+
+{# List Group #}
+{% macro listgroup(mylist, id) %}
+
+  <h3>{{id|upper}}</h3>
+  <ul class="list-group" id='list_{{id}}'>
+    {% for item in mylist %}
+    <li class="list-group-item" id='{{item|lower}}'>{{item}}</li>
+    {% endfor %}
+  </ul>
+
+{% endmacro %}
+
+
+{# Table Macro #}
+{% macro table(data) %}
+
+    <table class='table table-responsive table-condensed table-striped'>
+        <thead>
+            {% for col in data.head %}
+            <th>{{col}}</th>
+            {% endfor %}
+        </thead>
+        <tbody>
+            {% for rows in data.body %}
+                    <tr><td>{{rows[0]}}</td><td>{{rows[1]}}</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endmacro %}

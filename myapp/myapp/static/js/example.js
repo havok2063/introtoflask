@@ -2,7 +2,7 @@
 * @Author: Brian Cherinka
 * @Date:   2016-05-31 14:20:07
 * @Last Modified by:   Brian Cherinka
-* @Last Modified time: 2016-06-03 16:12:53
+* @Last Modified time: 2016-06-19 21:33:21
 */
 
 // Example Javascript object.
@@ -161,10 +161,11 @@ var Example = (function() {
                 // I am a callback that runs when the back-end code is successful
                 console.log('done');
                 if (isactive) {
-                 _this.changesess_button.toggleClass('btn-success', 'btn-primary');
+                 _this.changesess_button.button('reset');
                 } else {
-                 _this.changesess_button.toggleClass('btn-primary', 'btn-success');
+                 _this.changesess_button.button('complete');
                 }
+                window.reload();
             })
             .fail(function(data) {
                 // I am a callback that runs when the server or method crashes on the back-end

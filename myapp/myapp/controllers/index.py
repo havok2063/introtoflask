@@ -13,6 +13,8 @@ from flask import session as current_session, request, redirect, url_for, jsonif
 index_page = Blueprint("index_page", __name__)
 
 
+# All defined routes should be attached to this Blueprint
+
 @index_page.route('/', methods=['GET'])
 def index():
     ''' This is the Main page.  I run every time someone (re)loads this page.
@@ -30,7 +32,7 @@ def index():
     output['mytext'] = 'Here is some text!'
     if 'loadcat' not in current_session:
         current_session['loadcat'] = False
-    print('loadcat', current_session['loadcat'])
+    print('loadcat is currently', current_session['loadcat'])
     output['myurl'] = url_for('index_page.index')
 
     return render_template('index.html', **output)

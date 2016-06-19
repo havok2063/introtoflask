@@ -14,6 +14,7 @@ def create_app(debug=False):
     # -----------------------------
     # Create App
     # -----------------------------
+    # instantiate the Flask app, __name__ tells Flask what belongs to the application
     app = Flask(__name__, static_url_path='/static')
     app.debug = debug
 
@@ -31,10 +32,12 @@ def create_app(debug=False):
     # -----------------------------------
     # Set up a Logger for your application
     # -----------------------------------
+    # log = standard Pythong logging thing you create here -- then add it to the Flask handler
     # app.logger.addHandler(log)
+    # use your logger with app.logger.info('this is info'), don't use print statements inside Flask
 
     # ----------------------------------
-    # Load the appropriate Flask configuration file for a debug or production version
+    # Load an appropriate Flask configuration file for a debug or production version
     # ----------------------------------
     if app.debug:
         server_config_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'configuration', 'localhost.cfg')
@@ -67,7 +70,7 @@ def create_app(debug=False):
     from myapp.controllers.index import index_page
     from myapp.controllers.examples import example_page
 
-    url_prefix = '/myapp'  # I can prefix all routes
+    url_prefix = '/myapp'  # I can prefix all routes with a name
     app.register_blueprint(index_page, url_prefix=url_prefix)
     app.register_blueprint(example_page, url_prefix=url_prefix)
 
