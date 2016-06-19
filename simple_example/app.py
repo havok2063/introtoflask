@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from __future__ import print_function, division, absolute_import
-from flask import Flask, url_for, redirect
+from flask import Flask, url_for, redirect, g
 import argparse
 
 # --------------------------
@@ -27,7 +27,15 @@ def main():
         Navigating to '/' runs this method
         and returns results to the page
     '''
+
+    g.ra = 2345.456
+    dothis()
     return 'Hello, Welcome to Flask'
+
+
+def dothis():
+    ra = g.get('ra', None)
+    print('ra', ra, type(ra), type(g))
 
 
 @app.route('/add/', endpoint='doadd')
@@ -42,7 +50,8 @@ def add():
 @app.route('/hello/<name>/')
 @app.route('/hello/', defaults={'name': 'Bob'})
 def hello(name):
-    return 'Hello {0}'.format(name)
+    ishello = g.get('hello', None)
+    return 'Hello {0}, also {1}'.format(name, ishello)
 
 
 @app.route('/subtract/<int:x>/<int:y>/', methods=['GET'], endpoint='dosubtract')
@@ -75,6 +84,25 @@ def do_more_adding():
     addurl = url_for('doadd')
     print('Add URL:', addurl, url_for('add'))
     return redirect(addurl)
+
+
+@app.route('/crash/', endpoint='crash')
+def crash_me():
+    '''
+    In debug mode, when a crash occurs, a full traceback is sent
+    to the webpage
+
+    Also debug mode comes with a reloader, so changes in the code are auto
+    updated without having to stop and restart the app.
+
+    '''
+
+    # Try to expand a tuple that does not have all the
+    thing = (5, 4)
+    x, y, z = thing
+
+    return 'I have not crashed'
+
 
 if __name__ == '__main__':
     app.run(port=args.port, debug=args.debug)
