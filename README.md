@@ -27,7 +27,7 @@ Add the following to your PYTHONPATH in your .bashrc, .profile, or .tschrc
 
     export PYTHONPATH=$PYTHONPATH:/your/path/to/this/repo/introtoflask/myapp
 
-and replace your/path/to/this/repo with your directory path
+and replace your/path/to/this/repo with your directory path.  Do this if you want your app to behave as a Python package, and to be able to import parts of it here and there.
 
 A Simple Example
 ----------------
