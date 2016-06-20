@@ -4,7 +4,8 @@
 from __future__ import print_function, division, absolute_import
 from flask import Flask, Blueprint, send_from_directory, request, render_template
 from flask_jsglue import JSGlue
-#import myapp.jinja_filters
+from myapp.jinja_filters import jinjablue
+
 import sys
 import os
 
@@ -22,12 +23,6 @@ def create_app(debug=False):
     # rather than having to hardcode anything.
     # http://stewartjpark.com/Flask-JSGlue/
     jsglue = JSGlue(app)
-
-    # Define custom filters into the Jinja2 environment.
-    # Any filters defined in the jinja_env submodule are made available.
-    # See: http://stackoverflow.com/questions/12288454/how-to-import-custom-jinja2-filters-from-another-file-and-using-flask
-    #custom_filters = {name: function for name, function in getmembers(jinja_filters) if isfunction(function)}
-    #app.jinja_env.filters.update(custom_filters)
 
     # -----------------------------------
     # Set up a Logger for your application
@@ -73,6 +68,9 @@ def create_app(debug=False):
     url_prefix = '/myapp'  # I can prefix all routes with a name
     app.register_blueprint(index_page, url_prefix=url_prefix)
     app.register_blueprint(example_page, url_prefix=url_prefix)
+
+    # Register all custom Jinja filters in the file.
+    app.register_blueprint(jinjablue)
 
     return app
 

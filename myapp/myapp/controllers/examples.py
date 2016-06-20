@@ -17,6 +17,9 @@ def example():
     output['title'] = 'MyApp Examples'
     output['page'] = 'example'
 
+    # thing to split in browser
+    output['splitme'] = 'I-don"t-want-to-be-split-up!'
+
     # make some list data
     output['listdata'] = ['DOG', 'CAT', 'HORSE', 'PIG']
 
