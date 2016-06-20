@@ -71,6 +71,6 @@ In the browser, now navigate to http://localhost:9000/myapp/
 Resources
 ---------
 
-* [Explore Flask](https://exploreflask.com/en/latest/)
-* [Awesome Flask](https://github.com/humiaozuzu/awesome-flask)
-
+* [Explore Flask](https://exploreflask.com/en/latest/) - A good resource for learning Flask
+* [Awesome Flask](https://github.com/humiaozuzu/awesome-flask) - A giant list of tutorials and extensions
+* [Jinja2 Templating](http://jinja.pocoo.org/docs/dev/) - Jinja2 HTML Templating documentation
