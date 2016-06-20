@@ -48,6 +48,8 @@ Try:
 In debug mode, the Flask app will auto-reload when it detects code changes, and provides full tracebacks in the
 browser for easy debugging and development.  Let's work in debug mode from here on!
 
+In the browser, now navigate to http://localhost:8000/
+
 A More Complex Application
 --------------------------
 
@@ -62,3 +64,5 @@ The main Flask app is now defined inside a method called create_app, located wit
 This allows you to run many instances of the same application, using the run_app command.
 
 create_app is a way of creating an 'application factory'.  It allows you to test running your app under different configurations
+
+In the browser, now navigate to http://localhost:9000/myapp/

@@ -91,7 +91,7 @@ def crash_me():
     '''
 
     # Try to expand a tuple that does not have all the things
-    thing = (5, 4, 3)
+    thing = (5, 4)
     x, y, z = thing
 
     return 'I have not crashed'
