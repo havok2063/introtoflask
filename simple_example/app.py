@@ -30,11 +30,6 @@ def main():
     return 'Hello, Welcome to Flask'
 
 
-def dothis():
-    ra = g.get('ra', None)
-    print('ra', ra, type(ra), type(g))
-
-
 @app.route('/add/', endpoint='doadd')
 @app.route('/addnumbers/')
 def add():
