@@ -66,3 +66,11 @@ This allows you to run many instances of the same application, using the run_app
 create_app is a way of creating an 'application factory'.  It allows you to test running your app under different configurations
 
 In the browser, now navigate to http://localhost:9000/myapp/
+
+
+Resources
+---------
+
+* [Explore Flask](https://exploreflask.com/en/latest/)
+* [Awesome Flask](https://github.com/humiaozuzu/awesome-flask)
+
