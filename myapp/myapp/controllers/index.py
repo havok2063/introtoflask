@@ -24,7 +24,7 @@ def index():
 
     '''
 
-    # Create the dictionary to contain all the parameters you want
+    # Create a dictionary to contain all the parameters you want
     # to pass into the Jinja2 template
     output = {}
     output['title'] = 'MyApp'
@@ -35,6 +35,8 @@ def index():
     print('loadcat is currently', current_session['loadcat'])
     output['myurl'] = url_for('index_page.index')
 
+    # render_template accepts multiple keywords and arguments, but I like to keep everything together
+    # in a single dictionary and the dump the contents into the template with **dict
     return render_template('index.html', **output)
 
 

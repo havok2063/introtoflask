@@ -82,6 +82,8 @@ def getrandom():
         errmsg = '{0}ing number not specified'.format(val)
         result['error'] = '{0}: {1}'.format(result['error'], errmsg)
 
+    # jsonify will take your contents and convert it to a JSON format using json.dumps
+    # it accepts multiple args and kwargs, but I like to package things together
     return jsonify(result=result)
 
 
