@@ -33,7 +33,7 @@ def example():
     return render_template('examples.html', **output)
 
 
-# list function is called from the main example route, and can access the g
+# this function is called from the main example route, and can access the g
 def dothis():
     ra = g.get('ra', None)
     print('I am a variable stored in g: ra', ra)
