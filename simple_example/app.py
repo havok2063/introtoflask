@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from __future__ import print_function, division, absolute_import
-from flask import Flask, url_for, redirect, g
+from flask import Flask, url_for, redirect
 import argparse
 
 # --------------------------
@@ -27,9 +27,6 @@ def main():
         Navigating to '/' runs this method
         and returns results to the page
     '''
-
-    g.ra = 2345.456
-    dothis()
     return 'Hello, Welcome to Flask'
 
 

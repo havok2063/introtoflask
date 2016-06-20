@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from __future__ import print_function, division, absolute_import
-from flask import current_app, Blueprint, render_template, abort
+from flask import current_app, Blueprint, render_template, abort, g
 from flask import session as current_session, request, redirect, url_for, jsonify
 import numpy as np
 from . import processRequest
@@ -17,6 +17,10 @@ def example():
     output['title'] = 'MyApp Examples'
     output['page'] = 'example'
 
+    # Set some variable in g
+    g.ra = 2345.456
+    dothis()
+
     # thing to split in browser
     output['splitme'] = 'I-don"t-want-to-be-split-up!'
 
@@ -27,6 +31,12 @@ def example():
     output['tabledata'] = {'head': ['A', 'B'], 'body': [(1, 4), (2, 5), (3, 6)]}
 
     return render_template('examples.html', **output)
+
+
+# list function is called from the main example route, and can access the g
+def dothis():
+    ra = g.get('ra', None)
+    print('I am a variable stored in g: ra', ra)
 
 
 @example_page.route('/getrandomnumber/', methods=['POST'], endpoint='getrandom')
