@@ -2,7 +2,7 @@
 # encoding: utf-8
 
 from __future__ import print_function, division, absolute_import
-from flask import Flask, url_for, redirect
+from flask import Flask, url_for, redirect, g
 import argparse
 
 # --------------------------
@@ -91,7 +91,7 @@ def crash_me():
     '''
 
     # Try to expand a tuple that does not have all the things
-    thing = (5, 4)
+    thing = (5, 4, 3)
     x, y, z = thing
 
     return 'I have not crashed'

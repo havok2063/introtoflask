@@ -13,8 +13,8 @@ If you are using the [Anaconda Python distribution](http://www.continuum.io), Fl
 
 This tutorial has these Python dependencies:
 
- * [Flask-JSGlue](http://stewartjpark.com/Flask-JSGlue/)
- * [Flask-Testing](https://pythonhosted.org/Flask-Testing/)
+ * [Flask-JSGlue](http://stewartjpark.com/Flask-JSGlue/) - this lets me use Flask url_for inside javascript
+ * [Flask-Testing](https://pythonhosted.org/Flask-Testing/) - this makes it (a bit) easier to unit test your app
 
 Install them:
 
